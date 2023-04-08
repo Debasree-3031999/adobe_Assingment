@@ -8,7 +8,7 @@ const PostSchema=new mongoose.Schema(
             ref:"user",
             required:true
         },
-        like:{type:String,required:true}
+        like:{type:Boolean,required:true}
     },
     {
         timestamps: { createdAt: 'createdOn', updatedAt: 'ModifiedOn' }

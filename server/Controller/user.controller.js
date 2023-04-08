@@ -37,7 +37,7 @@ const getUserById=async(req,res)=>{
 
 const updateDataByUserId=async(req,res)=>{
     try {
-        const user=await User.findByIdAndUpdate(req.params.id).lean().exec();
+        const user=await User.findByIdAndUpdate(req.params.id, req.body,{new:true}).lean().exec();
         return res.status(200).send({updateDataByUserId:user})
     } catch (error) {
         return res.status(500).send({message:"something went wrong  when updateing user by id "})
