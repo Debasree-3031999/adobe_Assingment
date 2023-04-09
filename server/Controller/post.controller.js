@@ -7,7 +7,8 @@ const postData=async(req,res)=>{
         let post=await Post.create(req.body);
         return res.status(201).send({createPost:post})
     } catch (error) {
-        return res.status(500).send({message:"something went wrong data not post"})
+        console.log(error)
+        return res.status(500).send({message:error})
     }
 };
 
@@ -17,6 +18,7 @@ const getPostById=async(req,res)=>{
         const post=await Post.findById(req.params.id).populate().lean().exec();
         return res.status(200).send({getPostById:post})
     } catch (error) {
+        console.log(error)
         return res.status(500).send({message:"something went wrong when get post by id"})
     }
 }
@@ -27,6 +29,7 @@ const putPostById = async (req, res) => {
         const post = await Post.findByIdAndUpdate(req.params.id,req.body).lean().exec();
         return res.status(200).send({ putPostById: post })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({ message: "something went wrong when put post by id" })
     }
 }
@@ -37,6 +40,7 @@ const deletePostById = async (req, res) => {
         const post = await Post.findByIdAndDelete(req.params.id,req.body).lean().exec();
         return res.status(200).send({ deletePostById: post })
     } catch (error) {
+        console.log(error)
         return res.status(500).send({ message: "something went wrong when delete post by id" })
     }
 }
